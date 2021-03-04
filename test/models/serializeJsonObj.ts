@@ -20,7 +20,7 @@ export class AddressSerializer extends AbstractBNodeSerializer {
         this.addPrefix('address', 'http://example.com/Address/');
     }
 
-    serialize(value: Object): Triple[] {
+    serialize(value: any): Triple[] {
         const triples: Triple[] = [];
 
         triples.push(this.createTriple(this.subject, this.xsdType, this.makeResourceIRI('address:1234')));

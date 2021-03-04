@@ -27,8 +27,6 @@ export class DeserializerProcessor {
 
     private readonly xsdType = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
 
-    constructor() {}
-
     public async deserializeAsync<T>(type: { new(): T }, ttlData: string): Promise<T> {
         let qa: QuadsAndPrefixes;
         try {
@@ -257,6 +255,7 @@ export class DeserializerProcessor {
     private makePredicate(rdfPredicateString: string, prefixes: IRdfPrefixes): NamedNode {
         let predicate: NamedNode;
         if (rdfPredicateString) {
+            // eslint-disable-next-line
             if (/^(http|https):\/\/?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*|(#.*))?$/
                 .test(rdfPredicateString)) {
                 predicate = DataFactory.namedNode(rdfPredicateString);

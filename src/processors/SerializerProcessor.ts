@@ -236,6 +236,7 @@ export class SerializerProcessor {
   private makeSubject(rdfSubjectDecorator?: IRdfSubjectMetadata): Quad_Subject {
     let subject: Quad_Subject
     if (rdfSubjectDecorator) {
+      // eslint-disable-next-line
       if (/^(http|https):\/\/?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
       .test(rdfSubjectDecorator.prop) || rdfSubjectDecorator.prop === 'http://') {
         subject = DataFactory.namedNode(`${rdfSubjectDecorator.prop}${rdfSubjectDecorator.val}`)

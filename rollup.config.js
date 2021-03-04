@@ -3,8 +3,10 @@ import typescript from '@rollup/plugin-typescript';
 export default {
   input: 'src/index.ts',
   output: {
-    dir: 'output',
+    dir: 'bin',
     format: 'cjs'
   },
-  plugins: [typescript()]
+  plugins: [typescript({
+    tsconfig: "tsconfig.build.json"
+  })]
 };

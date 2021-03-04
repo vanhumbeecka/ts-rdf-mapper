@@ -47,7 +47,7 @@ const makeRDFPropertyMapper = <T>(prototype: any, key: string, prop: any) => {
  * @constructor
  */
 export const RdfProperty = (prop: IRdfProperty) => {
-    return (target: Object, key: string) => {
+    return (target: any, key: string) => {
         makeRDFPropertyMapper(target, key, prop);
     };
 };

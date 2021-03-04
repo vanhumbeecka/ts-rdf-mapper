@@ -57,7 +57,7 @@ const makeRDFSubjectMapper = <T>(prototype: any, key: string, prop: any) => {
  * @constructor
  */
 export const RdfSubject = (prop: string) => {
-    return (target: Object, key: string) => {
+    return (target: any, key: string) => {
         makeRDFSubjectMapper(target, key, prop);
     };
 };

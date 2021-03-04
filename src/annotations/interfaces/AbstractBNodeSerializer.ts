@@ -29,7 +29,7 @@ export type Triple_Predicate = RDFResourceIRI;
 
 export type Triple_Object = RDFResourceIRI | RDFLiteral | RDFBlankNode;
 
-export interface RDFPrefixes extends Prefixes {}
+export type RDFPrefixes = Prefixes
 
 /**
  * This class can be extended whenever you may want to serialize a value that is a json object
@@ -194,7 +194,7 @@ export abstract class AbstractBNodeSerializer {
      *
      * @returns An array of triples where each triple in the array corresponds to key:value pairs of the provided json
      */
-    abstract serialize(value: Object): RDFTriple[];
+    abstract serialize(value: any): RDFTriple[];
 
     /**
      * Create a triple by providing subject predicate object
