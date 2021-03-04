@@ -13,7 +13,7 @@ function logResult(assertName: string, result: any) {
 }
 
 describe('Serialize without using prefixes', () => {
-    it(SERIALIZE_BASIC_TYPES, () => {
+    it('Should serialize basic types', () => {
         const p = new PersonNonPrefixed();
         p.uuid = 'Anton';
         p.name = 'Anton';
@@ -34,6 +34,6 @@ describe('Serialize without using prefixes', () => {
         expect(b).toContain(`<http://example.com/Person/weight> "95.5"^^xsd:double;`);
         expect(b).toContain(`<http://example.com/Person/height> "198.5"^^xsd:long;`);
         expect(b).toContain(`<http://example.com/Person/buoyancy> "53.2"^^xsd:float.`);
-        logResult(SERIALIZE_BASIC_TYPES, b);
+        logResult('Should serialize basic types', b);
     });
 });

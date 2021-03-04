@@ -1,8 +1,6 @@
 import {
     DataFactory,
     Literal,
-    N3Parser,
-    N3Store,
     NamedNode,
     Parser,
     Prefixes,
@@ -35,7 +33,7 @@ export class DeserializerProcessor {
         let qa: QuadsAndPrefixes;
         try {
             qa = await this.getQuadsAndPrefixes(ttlData);
-            const store: N3Store = new Store();
+            const store: Store = new Store();
             store.addQuads(qa.quads);
             const dtoInstance = this.process(type, store);
 
@@ -49,7 +47,7 @@ export class DeserializerProcessor {
         let qs: Quad[];
         try {
             qs = this.getQuads(ttlData);
-            const store: N3Store = new Store();
+            const store: Store = new Store();
             store.addQuads(qs);
             const dtoInstance: T = this.process(type, store);
             return dtoInstance;
@@ -62,7 +60,7 @@ export class DeserializerProcessor {
         let qs: Quad[];
         try {
             qs = this.getQuads(ttlData);
-            const store: N3Store = new Store();
+            const store: Store = new Store();
             store.addQuads(qs);
             const dtoInstance: T = this.processTree(type, store);
             return dtoInstance;
@@ -71,7 +69,7 @@ export class DeserializerProcessor {
         }
     }
 
-    private processTree<T extends AbstractTreeNode>(type: { new(): T }, store: N3Store, object?: Quad_Object): T {
+    private processTree<T extends AbstractTreeNode>(type: { new(): T }, store: Store, object?: Quad_Object): T {
         const dtoInstance = new type();
 
         const ns: IRdfPrefixes = Reflect.getMetadata('RdfPrefixes', type.prototype);
@@ -133,7 +131,7 @@ export class DeserializerProcessor {
         return dtoInstance;
     }
 
-    private process<T>(type: { new(): T }, store: N3Store, object?: Quad_Object): T {
+    private process<T>(type: { new(): T }, store: Store, object?: Quad_Object): T {
         const dtoInstance = new type();
 
         const ns: IRdfPrefixes = Reflect.getMetadata('RdfPrefixes', type.prototype);
@@ -216,7 +214,7 @@ export class DeserializerProcessor {
         return result;
     }
 
-    private getNumTriplesByBeanType(beanType: string, store: N3Store, ns: IRdfPrefixes): Quad[] {
+    private getNumTriplesByBeanType(beanType: string, store: Store, ns: IRdfPrefixes): Quad[] {
         let numTriples: Quad[];
         if (beanType) {
             const beanTypeUri = Utils.getUriFromPrefixedName(beanType, ns);
@@ -229,7 +227,7 @@ export class DeserializerProcessor {
     }
 
     private async getQuadsAndPrefixes(ttlData: string): Promise<QuadsAndPrefixes> {
-        const parser: N3Parser = new Parser();
+        const parser: Parser = new Parser();
         return new Promise<QuadsAndPrefixes>((resolve, reject) => {
             const quads: Quad[] = [];
             parser.parse(ttlData, (e: Error, q: Quad, p: Prefixes) => {
@@ -247,7 +245,7 @@ export class DeserializerProcessor {
     }
 
     private getQuads(ttlData: string): Quad[] {
-        const parser: N3Parser = new Parser();
+        const parser: Parser = new Parser();
         const r: Quad[] = parser.parse(ttlData);
         return r;
     }
