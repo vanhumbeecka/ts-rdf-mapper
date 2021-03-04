@@ -6,6 +6,7 @@ import { RdfProperty } from '../src/annotations/RdfProperty'
 import { RdfSubject } from '../src/annotations/RdfSubject'
 import { XSDDataType } from '../src/annotations/XSDDataType'
 import { RdfMapper } from '../src/RdfMapper'
+import { PersonWithConstructor } from './models/constructorModel'
 import { User } from './models/litralSerializer'
 import {
   Addr, Calendar, Days, Month, MonthWithIRI, Per, PersonHasFriend, PersonMultipleDataTypes, SampleTreeNode, SuperBase
@@ -354,5 +355,14 @@ describe('Testing basic serialization functions', () => {
     expect(deserializedNode.children[2].children[0].label).toEqual('Sub Node 3.1')
     logResult('Serialize recursive tree into blank nodes', r)
   })
+
+  // it('serialize model with constructor', () => {
+  //   const person = new PersonWithConstructor('Andries', 'andries', 'the great');
+  //   const r = RdfMapper.serialize(person);
+  //
+  //   expect(r).toContain(`person:Andries a foaf:Person;`)
+  //   expect(r).toContain(`person:firstName "andries"^^xsd:string;`)
+  //   expect(r).toContain(`person:name "the great"^^xsd:string;`)
+  // })
 
 })

@@ -3,8 +3,6 @@ import {PersonNonPrefixed} from './models/nonPrefixModels';
 
 const shouldLogResult = false;
 
-const SERIALIZE_BASIC_TYPES = 'Should serialize basic types (no prefixes)';
-
 function logResult(assertName: string, result: any) {
     if (shouldLogResult) {
         console.log(`Expectation: ${assertName}`);

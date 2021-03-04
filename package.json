@@ -1,7 +1,7 @@
 {
-  "name": "ts-rdf-mapper",
+  "name": "@consolidate/ts-rdf-mapper",
   "version": "1.0.0",
-  "description": "Object to Turtle mapper",
+  "description": "Object to Turtle mapper - Fork of ts-rdf-mapper",
   "main": "./bin/index.js",
   "typings": "./bin/index.d.ts",
   "scripts": {
@@ -23,6 +23,9 @@
   ],
   "author": "Anton Sukhovatkin",
   "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.0",
     "@types/jest": "^26.0.20",
@@ -39,5 +42,13 @@
     "@types/n3": "^1.4.4",
     "n3": "^1.8.1",
     "reflect-metadata": "^0.1.13"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanhumbeecka/ts-rdf-mapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vanhumbeecka/ts-rdf-mapper/issues"
+  },
+  "homepage": "https://github.com/vanhumbeecka/ts-rdf-mapper#readme"
 }
